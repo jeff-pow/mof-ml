@@ -1,0 +1,3 @@
+#!/bin/bash
+source /home/jeff/CCDC/ccdc-software/csd-python-api/miniconda/bin/activate base
+python "$@" 1>&1 2>&2

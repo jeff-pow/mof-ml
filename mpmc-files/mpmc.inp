@@ -1,0 +1,28 @@
+job_name                    xjobx
+
+ensemble                    uvt
+
+numsteps                    1000000
+corrtime                    1000
+insert_probability          0.666
+rot_factor                  1.0
+move_factor                 1.0
+
+cavity_autoreject_absolute  on
+cavity_autoreject_scale     0.5
+
+temperature                 293
+pressure                    1
+
+n2_fugacity                 on
+
+polarization                off
+
+parallel_restarts           on
+read_pqr_box                on
+wrapall                     on
+pqr_input                   INPUT.pdb
+traj_output                 /dev/null
+field_output                /dev/null
+dipole_output               /dev/null
+frozen_output               /dev/null

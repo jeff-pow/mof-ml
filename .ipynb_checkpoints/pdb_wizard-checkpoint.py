@@ -1082,7 +1082,7 @@ def list_lone_atoms(system: list[Atom], pbc: PBC) -> None:
         for atom in lone_atoms:
             print(f"{atom.element:>3} {atom.id:>5} {atom.x}")
 
-def delete_solvents(system: list[Atom], pbc: PBC):
+def delete_ccdc_solvents(system: list[Atom], pbc: PBC):
     delete_lone_non_metals(system, pbc)
 
     system = sort(system, pbc)
@@ -1126,9 +1126,8 @@ def delete_solvents(system: list[Atom], pbc: PBC):
         print("\nNo lone mols found\n")
     else:
         print("\nDeleting {len(lone_mols)} lone mols:\n")
-        for mol in lone_mols:
-            for atom in mol:
-                system.remove(atom)
+        for atom in lone_mols:
+            system.remove(atom)
     set_atom_ids(system)
 
 
@@ -1136,7 +1135,7 @@ def delete_lone_non_metals(system: list[Atom], pbc: PBC) -> list[Atom]:
     lone_atoms = []
     for atom in progressbar(system):
         lone_atom = True
-        if atom.atomic_number in range(11, 15) or atom.atomic_number >= 20:
+        if lone_atom.atomic_number in range(11, 15) or lone_atom.atomic_number >= 20:
             lone_atom = False
         for atom2 in system:
             if atom2.id != atom.id:
